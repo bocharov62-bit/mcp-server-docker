@@ -93,10 +93,10 @@ class CreateContainerInput(JSONParsingModel):
     entrypoint: str | None = Field(None, description=\"Entrypoint to run in container\")
     command: str | None = Field(None, description=\"Command to run in container\")
     network: str | None = Field(None, description=\"Network to attach the container to\")
-    environment: dict[str, str] | None = Field(
-        None, description=\"Environment variables dictionary\"
+    environment: dict[str, str] | list[str] | None = Field(
+        None, description=\"Environment variables dictionary or list of strings in KEY=VALUE format\"
     )
-    ports: dict[str, int | list[int] | list[Any] | None] | None = Field(
+    ports: dict[str, int | list[int] | list[str | int] | None] | None = Field(
         None,
         description=\"A map whose keys are the container port, and the values are the host port(s) to bind to.\",
     )
